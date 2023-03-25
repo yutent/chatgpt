@@ -1,6 +1,8 @@
 import { resolve } from 'path'
 
 export default {
+  // 部署目录调整为二级目录
+  base: '/chatgpt/',
   devServer: {
     port: 8080,
     domain: '',
