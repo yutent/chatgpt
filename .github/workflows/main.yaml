@@ -1,0 +1,45 @@
+
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.10.0
+
+      - name: 拉取代码
+        uses: actions/checkout@v3
+
+      - name: 安装依赖并编译
+        run: |
+          npm i
+          npm run build
+
+      - name: 设置github pages
+        uses: actions/configure-pages@v3
+          
+      - name: 上传dist目录
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './dist'
+          
+      - name: 部署github pages
+        id: deployment
+        uses: actions/deploy-pages@v1
