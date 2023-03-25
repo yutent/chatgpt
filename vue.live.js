@@ -18,7 +18,7 @@ export default {
       // 这里的resolve可将相对路径转为绝对路径
       // 如果传入的路径已经是绝对路径的, 可不需要resolve
       entry: resolve('./src/main.js'),
-      title: 'vue-live 应用示例'
+      title: 'chatgpt网页客户端'
     }
   },
   // 以下cdn地址, 可自行修改为适合的
@@ -26,11 +26,7 @@ export default {
   // 也可以在页面中直接引入完整的路径, 而不必须在这里声明
   imports: {
     vue: '//jscdn.ink/vue/3.2.47/vue.runtime.esm-browser.prod.js',
-    // 这个vue-router库, 移除了 @vue/devtools-api 相关的代码。 以达到减少不必须的体积的效果
-    // 如需要支持devtools的, 请修改为原版vue-router地址即可。
-    // 'vue-router': '//jscdn.ink/@bytedo/vue-router/4.1.6/vue-router.js',
-    // 'vue-router': '//jscdn.ink/vue-router/4.1.6/vue-router.esm-browser.js',
-    // '@vue/devtools-api': '//jscdn.ink/@vue/devtools-api/6.5.0/esm/index.js',
+    '@bd/core.js': '//jscdn.ink/@bd/core/1.6.0/index.js',
     fetch: '//jscdn.ink/@bytedo/fetch/2.1.5/next.js'
   }
 }

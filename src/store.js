@@ -1,9 +1,15 @@
-
 import { reactive } from 'vue'
 
 const store = reactive({
-  foo: 'bar',
-  version: '0.4.0'
+  API_KEY: localStorage.getItem('API_KEY'),
+  BASE_URL: localStorage.getItem('BASE_URL'),
+
+  conversations: [],
+  conversation: {
+    id: '',
+    lastMessageId: ''
+  },
+  records: []
 })
 
 export default function (app) {
