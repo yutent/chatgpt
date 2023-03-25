@@ -1,0 +1,11 @@
+{
+  "name": "fite-app",
+  "type": "module",
+  "scripts": {
+    "start": "fite dev",
+    "build": "fite build"
+  },
+  "devDependencies": {
+    "fite": "^0.4.0"
+  }
+}
