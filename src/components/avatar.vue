@@ -1,6 +1,6 @@
 <template>
   <div v-if="name" class="avatar name">{{ name.slice(-1) }}</div>
-  <img v-else class="avatar" src="/img/chatgpt.svg" />
+  <img v-else class="avatar" src="/chatgpt/img/chatgpt.svg" />
 </template>
 
 <script>
