@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { removeConversation } from '@/lib/fetch.js'
+
 export default {
   data() {
     return {
