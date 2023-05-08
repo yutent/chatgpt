@@ -3,7 +3,7 @@
     <div class="records" ref="records">
       <section class="item" v-for="it in records" :key="it.id">
         <Avatar :name="it.role === 0 ? '我' : ''" />
-        <div class="content" v-html="markd(it.content)"></div>
+        <div class="content" v-html="md2html(it.content)"></div>
       </section>
     </div>
     <textarea
@@ -20,9 +20,9 @@
 
 <script>
 import Avatar from '@/components/avatar.vue'
-import '@/lib/wc-code.js'
+import '//jscdn.ink/@bd/ui/latest/code/index.js'
 import { nextTick } from 'vue'
-import markd from '@/lib/markd.js'
+import md2html from '//jscdn.ink/@bd/ui/latest/markd/core.js'
 
 function ask() {
   //
@@ -58,7 +58,7 @@ export default {
   },
 
   methods: {
-    markd,
+    md2html,
 
     ask(ev) {
       let question = this.question.trim()

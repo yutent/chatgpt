@@ -6,6 +6,6 @@
     "build": "fite build"
   },
   "devDependencies": {
-    "fite": "^0.4.0"
+    "fite": "^0.7.5"
   }
 }
