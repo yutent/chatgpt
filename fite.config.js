@@ -28,7 +28,7 @@ export default {
   // 也可以在页面中直接引入完整的路径, 而不必须在这里声明
   imports: {
     vue: '//jscdn.ink/vue/3.2.47/vue.runtime.esm-browser.prod.js',
-    '@bd/core.js': '//jscdn.ink/@bd/core/latest/index.js',
+    '@bd/core': '//jscdn.ink/@bd/core/latest/index.js',
     fetch: '//jscdn.ink/@bytedo/fetch/latest/next.js'
   }
 }
