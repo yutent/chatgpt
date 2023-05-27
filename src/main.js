@@ -5,4 +5,4 @@ import store from './store'
 
 const app = createApp(App)
 
-app.use(store).mount('.app')
+app.use(store).mount('#app')

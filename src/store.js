@@ -7,7 +7,8 @@ const store = reactive({
   conversations: [],
   conversation: {
     id: '',
-    lastMessageId: ''
+    tokens: 0,
+    records: []
   },
   records: []
 })

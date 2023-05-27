@@ -4,6 +4,8 @@
       <section class="item" v-for="it in records" :key="it.id">
         <Avatar :name="it.role === 0 ? '我' : ''" />
         <div class="content" v-html="md2html(it.content)"></div>
+        <wc-icon class="act delete" name="trash"></wc-icon>
+        <wc-icon class="act retry" name="backward"></wc-icon>
       </section>
     </div>
     <textarea
@@ -166,6 +168,18 @@ export default {
           transform: rotate(45deg);
           content: '';
         }
+      }
+
+      .act {
+        display: none;
+        width: 16px;
+        height: 16px;
+        margin: 0 6px;
+        cursor: pointer;
+      }
+
+      &:hover .act {
+        display: inline-flex;
       }
 
       &:nth-child(odd) {

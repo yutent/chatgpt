@@ -27,7 +27,7 @@ body {
   font-size: 14px;
   color: var(--color-dark-1);
 }
-.app {
+#app {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -41,5 +41,6 @@ body {
 .main {
   flex: 1;
   display: flex;
+  height: calc(100% - 48px);
 }
 </style>

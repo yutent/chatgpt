@@ -30,11 +30,11 @@ export default {
 
   methods: {
     createNewConversation() {
-      this.conversation = {
+      this.$store.conversation = {
         id: '',
-        lastMessageId: ''
+        tokens: 0,
+        records: []
       }
-      this.records = []
     },
 
     removeConversation(it, idx) {
@@ -112,6 +112,7 @@ export default {
       }
 
       .close {
+        font-size: 12px;
         opacity: 0.1;
         transition: opacity 0.2s ease-in;
       }
