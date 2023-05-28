@@ -12,7 +12,11 @@
         :class="{ active: it.id === $store.conversation.id }"
       >
         <span class="text-ell">{{ it.name }}</span>
-        <a class="close" @click.stop="removeConversation(it, i)"> ╳ </a>
+        <wc-icon
+          class="close"
+          name="close"
+          @click.stop="removeConversation(it, i)"
+        ></wc-icon>
       </li>
     </ul>
   </aside>
@@ -38,21 +42,22 @@ export default {
     },
 
     removeConversation(it, idx) {
-      this.$confirm(`是否删除此会话【${it.name}】`)
+      layer
+        .confirm(`是否删除此会话【${it.name}】`)
         .then(_ => {
-          removeConversation(it.id)
-            .then(r => {
-              this.$message.success('删除会话成功')
-              this.conversations.splice(idx, 1)
-              if (this.conversations.length) {
-                this.pickThisConversation(this.conversations[0])
-              } else {
-                this.createNewConversation()
-              }
-            })
-            .catch(r => {
-              this.$message.success('删除会话失败')
-            })
+          // removeConversation(it.id)
+          //   .then(r => {
+          layer.toast('删除会话成功', 'success')
+          this.$store.conversations.splice(idx, 1)
+          if (this.$store.conversations.length) {
+            this.pickThisConversation(this.$store.conversations[0])
+          } else {
+            this.createNewConversation()
+          }
+          // })
+          // .catch(r => {
+          //   this.$message.success('删除会话失败')
+          // })
         })
         .catch(function () {})
     },
@@ -112,21 +117,24 @@ export default {
       }
 
       .close {
-        font-size: 12px;
-        opacity: 0.1;
-        transition: opacity 0.2s ease-in;
+        width: 18px;
+        height: 18px;
+        padding: 3px;
+        border-radius: 50%;
+        cursor: pointer;
+        color: var(--color-blue-a);
+        transition: color 0.2s ease-in, background 0.2s ease-in;
+
+        &:hover {
+          background: var(--color-red-1);
+          color: #fff;
+        }
       }
 
       &.active,
       &:hover {
         color: var(--color-blue-1);
         background: #ecf5ff;
-
-        .close {
-          opacity: 1;
-          cursor: pointer;
-          transform: scale(1.2);
-        }
       }
     }
   }

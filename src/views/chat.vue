@@ -1,7 +1,11 @@
 <template>
   <div class="current-session">
     <div class="records" ref="records">
-      <section class="item" v-for="it in records" :key="it.id">
+      <section
+        class="item"
+        v-for="it in $store.conversation.records"
+        :key="it.id"
+      >
         <Avatar :name="it.role === 0 ? '我' : ''" />
         <div class="content" v-html="md2html(it.content)"></div>
         <wc-icon class="act delete" name="trash"></wc-icon>
@@ -25,14 +29,15 @@ import Avatar from '@/components/avatar.vue'
 import '//jscdn.ink/@bd/ui/latest/code/index.js'
 import { nextTick } from 'vue'
 import md2html from '//jscdn.ink/@bd/ui/latest/markd/core.js'
+import { uuid } from '//jscdn.ink/crypto.web.js/latest/crypto.js'
 
-function ask() {
+function ask(content, id) {
   //
 
   return Promise.resolve({
     data: {
-      conversation: '',
-      id: '',
+      conversation: id || uuid(),
+      id: uuid(),
       text: 'blabla...'
     }
   })
@@ -46,7 +51,6 @@ export default {
   components: { Avatar },
   data() {
     return {
-      records: [],
       question: '',
       loading: false
     }
@@ -64,7 +68,7 @@ export default {
 
     ask(ev) {
       let question = this.question.trim()
-      let { id, lastMessageId } = this.$store.conversation
+      let { id } = this.$store.conversation
 
       if (ev.keyCode === 13) {
         if (ev.shiftKey) {
@@ -83,19 +87,23 @@ export default {
 
         this.question = ''
 
-        this.records.push({ id: Date.now(), role: 0, content: question })
+        this.$store.conversation.records.push({
+          id: uuid(),
+          role: 0,
+          content: question
+        })
 
         nextTick(_ => (this.$refs.records.scrollTop = Number.MAX_SAFE_INTEGER))
 
         this.loading = true
 
-        this.records.push({
-          id: Date.now(),
+        this.$store.conversation.records.push({
+          id: uuid(),
           role: 1,
           content: '<div class="loading"><i></i><i></i><i></i></div>'
         })
 
-        ask(question, lastMessageId, id)
+        ask(question, id)
           .then(r => {
             if (!id) {
               this.$store.conversations.unshift({
@@ -104,14 +112,13 @@ export default {
               })
             }
             this.$store.conversation.id = r.data.conversation
-            this.$store.conversation.lastMessageId = r.data.id
-
-            this.records.at(-1).id = r.data.id
-            this.records.at(-1).content = r.data.text
+            this.$store.conversation.records.at(-1).id = r.data.id
+            this.$store.conversation.records.at(-1).content = r.data.text
           })
           .catch(r => {
             console.log(r)
-            this.records.at(-1).content = r.msg || r.toString()
+            this.$store.conversation.records.at(-1).content =
+              r.msg || r.toString()
 
             this.$message.error(r.msg || r.toString())
           })
