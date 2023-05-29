@@ -27,6 +27,7 @@ export default {
   // 有用到其他的库, 可以手动添加,
   // 也可以在页面中直接引入完整的路径, 而不必须在这里声明
   imports: {
+    'es.shim': '//jscdn.ink/es.shim/latest/index.js',
     vue: '//jscdn.ink/vue/3.2.47/vue.runtime.esm-browser.prod.js',
     wkit: '//jscdn.ink/wkit/latest/index.js',
     '@bd/core': '//jscdn.ink/wkit/latest/index.js',

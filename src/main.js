@@ -1,3 +1,11 @@
+/**
+ * {}
+ * @author yutent<yutent.io@gmail.com>
+ * @date 2023/05/29 18:36:30
+ */
+
+import 'es.shim'
+
 import { createApp } from 'vue'
 import App from './app.vue'
 
