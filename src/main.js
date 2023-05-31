@@ -6,6 +6,11 @@
 
 import 'es.shim'
 
+import '@bd/ui/space/index.js'
+import '@bd/ui/layer/index.js'
+import '@bd/ui/tabs/index.js'
+import '@bd/ui/slider/index.js'
+
 import { createApp } from 'vue'
 import App from './app.vue'
 

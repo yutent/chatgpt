@@ -1,16 +1,23 @@
 import { reactive } from 'vue'
 
 const store = reactive({
-  API_KEY: localStorage.getItem('API_KEY'),
-  BASE_URL: localStorage.getItem('BASE_URL'),
-
   conversations: [],
   conversation: {
     id: '',
     tokens: 0,
     records: []
   },
-  records: []
+  records: [],
+
+  gpt: {
+    apiKey: localStorage.getItem('API_KEY') || '',
+    baseUrl: localStorage.getItem('BASE_URL') || '//api.openai.com',
+    model: 'gpt-3.5-turbo',
+    temperature: 0.8,
+    top_p: 1,
+    presence_penalty: 1,
+    frequency_penalty: 0
+  }
 })
 
 export default function (app) {

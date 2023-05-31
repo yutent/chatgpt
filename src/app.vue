@@ -4,15 +4,28 @@
     <Aside />
     <Chat />
   </div>
+  <wc-layer ref="preferences" mask>
+    <Preferences />
+    <wc-icon class="close" name="close" @click="$refs.preferences.close()" />
+  </wc-layer>
 </template>
 
 <script>
 import Topbar from './views/topbar.vue'
 import Aside from './views/aside.vue'
 import Chat from './views/chat.vue'
+import Preferences from './views/preferences.vue'
 
 export default {
-  components: { Topbar, Aside, Chat }
+  components: { Topbar, Aside, Chat, Preferences },
+  mounted() {
+    this.openPreferencesPanel()
+  },
+  methods: {
+    openPreferencesPanel() {
+      this.$refs.preferences.show()
+    }
+  }
 }
 </script>
 
@@ -42,5 +55,18 @@ body {
   flex: 1;
   display: flex;
   height: calc(100% - 48px);
+}
+</style>
+<style lang="scss" scoped>
+.close {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  --size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-red-1);
+  }
 }
 </style>

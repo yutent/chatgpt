@@ -30,6 +30,7 @@ export default {
     'es.shim': '//jscdn.ink/es.shim/latest/index.js',
     vue: '//jscdn.ink/vue/3.2.47/vue.runtime.esm-browser.prod.js',
     wkit: '//jscdn.ink/wkit/latest/index.js',
+    '@bd/ui/': '//jscdn.ink/@bd/ui/latest/',
     '@bd/core': '//jscdn.ink/wkit/latest/index.js',
     fetch: '//jscdn.ink/@bytedo/fetch/latest/next.js'
   }

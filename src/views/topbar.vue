@@ -1,7 +1,7 @@
 <template>
   <main class="noselect topbar">
     <section class="btns"><i></i><i></i><i></i></section>
-    <div class="option">•••</div>
+    <div class="option" @click="openPanel">•••</div>
   </main>
 </template>
 
@@ -10,6 +10,11 @@ export default {
   data() {
     return {
       content: '这是关于我们页面'
+    }
+  },
+  methods: {
+    openPanel() {
+      this.$root.openPreferencesPanel()
     }
   }
 }
@@ -45,5 +50,6 @@ export default {
 }
 .option {
   font-size: 22px;
+  cursor: pointer;
 }
 </style>

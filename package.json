@@ -1,11 +1,11 @@
 {
-  "name": "fite-app",
+  "name": "chatgpt-client",
   "type": "module",
   "scripts": {
     "start": "fite dev",
     "build": "fite build"
   },
   "devDependencies": {
-    "fite": "^1.1.6"
+    "fite": "^1.1.7"
   }
 }
